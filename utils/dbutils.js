@@ -1,10 +1,10 @@
 const mongoose  = require("mongoose");
-const {Charges} = require('../model/model.js');
+const {chargers} = require('../model/model.js');
 
 exports.connection = () => {
   mongoose.connect(
     "mongodb+srv://connect_db:ete8vcg2n2wubLF@cluster0-bx6d2.mongodb.net/test?retryWrites=true&w=majority",
-    { useNewUrlParser: true, dbName: "charges" },
+    { useNewUrlParser: true, dbName: "chargers" },
     err => {
       if (err) throw err;
       console.log("connect success");
@@ -13,15 +13,15 @@ exports.connection = () => {
   }
   
   exports.pagination = (pageOptions) => {
-   return Charges.find().skip(pageOptions.page * pageOptions.limit).limit(pageOptions.limit);
+   return chargers.find().skip(pageOptions.page * pageOptions.limit).limit(pageOptions.limit);
   }
 
   exports.search = (string) => {
-    return Charges.find({ "name": { "$regex": string, "$options": "i" } }).limit(30);
+    return chargers.find({ "name": { "$regex": string, "$options": "i" } }).limit(30);
   }
 
 exports.input = (data) => {
-  const charge =  new Charges( {
+  const charge =  new chargers( {
     name: data.name,
     description: data.description,
     category: data.category,

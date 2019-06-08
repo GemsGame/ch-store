@@ -1,49 +1,23 @@
 import React, { Component } from "react";
-import logo from "../logo.svg";
 import "./App.css";
 import RowList from "../components/RowList";
 import SearchForm from "../components/SearchForm";
 import Category from "../components/Category";
 import PagePagination from "../components/PagePagination";
-
 import { connect } from "react-redux";
-import { chargesFetchData } from "../actions/charges";
+import { chargersFetchData } from "../actions/chargers";
+
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: null,
-      search: "",
-      result: null
-    };
-  }
- 
+  
   componentWillMount() {
-    fetch(
-      "https://spreadsheets.google.com/feeds/list/1KSJUJi1lW8qT-lU9r5jXj-gv4bUSiN49SQZ-1fGua7M/1/public/values?alt=json"
-    )
-      //fetch('https://spreadsheets.google.com/feeds/list/1KSJUJi1lW8qT-lU9r5jXj-gv4bUSiN49SQZ-1fGua7M/2106449282/od6/public/values?alt=json')
-      .then(response => response.json())
-      .then(json => this.setState({ data: json }));
-  }
-
-  componentDidMount() {
-   this.props.fetchData("/search=acer");
-  }
+    this.props.fetchData("/page=0&limit=10");
+  } 
+  
 
   handleChange = event => {
     this.setState({ search: event.target.value });
   };
-
-
-
-  /*componentDidUpdate () {
- if(this.state.search !== '') {
- const get = this.state.data.feed.entry.filter((item,index) => item.gsx$name.$t.match(this.state.search));
- console.log(get);
-
- } */
 
   getResult = () => {
     if (this.state.search !== "") {
@@ -57,23 +31,11 @@ class App extends Component {
 
   render() {
  
-    return this.state.data != null ? (
+    return this.props.chargers != null ? (
       <div className="App">
         <Category />
-        <br />
-        <div className="search-container">
-          <SearchForm
-            handleChange={this.handleChange}
-            value={this.state.search}
-            getResult={this.getResult}
-          />
-        </div>
-        <br />
-
-        <div className="rowlist">
-          <RowList data={this.state.data} result={this.state.result} />
-        </div>
-        <br />
+          <SearchForm/>
+          <RowList/>
         <PagePagination />
       </div>
     ) : null;
@@ -82,13 +44,13 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    charges: state.charges
+    chargers: state.chargers
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchData: url => dispatch(chargesFetchData(url))
+    fetchData: url => dispatch(chargersFetchData(url))
   };
 };
 
