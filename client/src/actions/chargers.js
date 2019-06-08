@@ -1,11 +1,11 @@
-export function chargesFetchDataSuccess(charges) {
+export function chargersFetchDataSuccess(chargers) {
   return {
-    type: "CHARGES_FETCH_DATA_SUCCESS",
-    payload: charges
+    type: "CHARGERS_FETCH_DATA_SUCCESS",
+    payload: chargers
   };
 }
 
-export function chargesFetchData(url) {
+export function chargersFetchData(url) {
   return dispatch => {
     fetch(url)
     .then(response => {
@@ -15,7 +15,7 @@ export function chargesFetchData(url) {
       return response;
     })
     .then(response => response.json())
-    .then(charges => dispatch(chargesFetchDataSuccess(charges)));
+    .then(chargers => dispatch(chargersFetchDataSuccess(chargers)));
   }
 }
      

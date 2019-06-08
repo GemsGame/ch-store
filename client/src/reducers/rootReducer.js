@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
-import {charges} from './charges.js';
+import {chargers} from './chargers.js';
 
 const rootReducer = combineReducers ({
-    charges
+    chargers
 
 });
 

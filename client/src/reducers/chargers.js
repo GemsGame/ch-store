@@ -1,6 +1,6 @@
-export function charges (state = [], action) {
+export function chargers (state = [], action) {
 switch(action.type) {
-    case "CHARGES_FETCH_DATA_SUCCESS":
+    case "CHARGERS_FETCH_DATA_SUCCESS":
         return action.payload;
         default: return state;
 }

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const chargesSchema = new Schema({
+const chargersSchema = new Schema({
   _id: mongoose.Types.ObjectId,
   name: String,
   description:String,
@@ -10,4 +10,4 @@ const chargesSchema = new Schema({
   img:String,
 });
 
-exports.Charges = mongoose.model("Charges", chargesSchema, 'charges_30k');
+exports.chargers = mongoose.model("chargers", chargersSchema, 'chargers_30k');
