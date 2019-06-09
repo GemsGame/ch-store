@@ -10,4 +10,4 @@ const chargersSchema = new Schema({
   img:String,
 });
 
-exports.chargers = mongoose.model("chargers", chargersSchema, 'chargers_30k');
+exports.chargers = mongoose.model("charges", chargersSchema, 'charges_30k');

@@ -4,7 +4,7 @@ const {chargers} = require('../model/model.js');
 exports.connection = () => {
   mongoose.connect(
     "mongodb+srv://connect_db:ete8vcg2n2wubLF@cluster0-bx6d2.mongodb.net/test?retryWrites=true&w=majority",
-    { useNewUrlParser: true, dbName: "chargers" },
+    { useNewUrlParser: true, dbName: "charges" },
     err => {
       if (err) throw err;
       console.log("connect success");
