@@ -16,7 +16,7 @@ class RowList extends Component {
           name={item.name}
           image={item.img}
           newPrice={item.price}
-          oldPrice={item.price}
+          oldPrice={item.price+15}
           >
             <UiButton color="violet">
               <i className="question icon" />
