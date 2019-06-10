@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { chargersFetchData } from "../../actions/chargers";
 
 class PagePagination extends Component {
-  
+
   componentWillMount() {
     this.props.fetchData("/page=0&limit=30");
   } 
@@ -16,12 +16,12 @@ class PagePagination extends Component {
   render() {
     return (
       <Pagination
-        boundaryRange={5}
+        boundaryRange={0}
         defaultActivePage={1}
         ellipsisItem={null}
         firstItem={null}
         lastItem={null}
-        siblingRange={1}
+        siblingRange={4}
         totalPages={Infinity}
         onPageChange={(e, props) => this.activePage(props.activePage)}
       />
